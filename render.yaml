@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: doberto-flix-scraper
+    env: node
+    region: oregon          # oswa frankfurt si ou vle pi pre Ayiti
+    plan: free              # Free tier — 512MB RAM, sleep apre 15min inactivite
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+    # Pou evite sleep sou free tier, ou ka ajoute yon health-check ping
+    healthCheckPath: /health
